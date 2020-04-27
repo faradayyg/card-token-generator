@@ -1,0 +1,1 @@
+gunicorn -b 0.0.0.0:8009 --error-logfile /var/log/gunicorn.log app:app

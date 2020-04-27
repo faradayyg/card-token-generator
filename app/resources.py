@@ -65,6 +65,3 @@ class Payment(Resource):
         card_repo = CardRepo('stripe')
         response = card_repo.pay(data, user)
         return response
-
-# Xw6okDJZm/LPk9edX3oKhDbfOQKN0M8OgfkxusXijHpxF4fO+2fj5X9w5uaxg5eTC+4cxcxZm3IwLANXudGLjA==
-# iUh9KeloKGK75J1VgG020j8kOYlYyHVFaEwO1tAqpbgFlkFaRDp7QrMgvleoGA0b5fBteSKn1J+VVlpgc4z2WA==

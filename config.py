@@ -7,6 +7,7 @@ class Config(object):
     TESTING = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    STRIPE_SECRET = os.environ.get('STRIPE_SECRET')
 
 class ProductionConfig(Config):
     DATABASE_URI = 'mysql://user@localhost/foo'

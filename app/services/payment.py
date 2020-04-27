@@ -1,4 +1,5 @@
 import stripe
+import config
 
 class Briantree:
     name = 'briantree'
@@ -11,7 +12,7 @@ class Stripe:
     charge = False
     def pay(self, data):
         # Standardize response
-        stripe.api_key = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+        stripe.api_key = config.ProductionConfig.STRIPE_SECRET #should come from env vars
         parsed_card = {
                     "number": data['card']['card_number'],
                     "exp_month": int(data['card']['expiry'][:2]),
