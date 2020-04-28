@@ -39,9 +39,4 @@ class Stripe:
         except stripe.error.InvalidRequestError as aa:
             return False
         
-        if charge and charge.status == 'requires_action' and charge.next_action.type == 'use_stripe_sdk':
-            return charge
-        elif charge.status == 'succeeded':
-            return True
-        else:
-            return False
+        return charge

@@ -2,6 +2,7 @@ from Crypto.Cipher import AES
 import base64, hashlib, json
 from app.services import payment
 from app.models import Vault
+from app.utils import further_processing, standardize_response
 
 class CardRepo:
     gateway = 'briantree'
@@ -41,7 +42,11 @@ class CardRepo:
         data['card'] = json.loads(self.decode_token(user, vault.card_token))
         status = methods[self.gateway].pay(data)
 
-        if status == True:
+        response = standardize_response(self.gateway, status)
+        if response == True:
             return {"status": "success", "message": "charge successful"}
-        elif status == False:
+        elif response == False:
             return {"status": "error", "message": "charge failure"}, 500
+        else:
+            # do further processing on the transaction
+            return further_processing(self.gateway, response)
